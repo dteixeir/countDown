@@ -13,7 +13,7 @@ class CountDown extends Component {
 
   render() {
     return (
-      <div style={{ backgroundColor: 'black' }} >
+      <div style={{ height: '100vh', backgroundColor: 'black' }} >
         <Tiles giphys={this.props.giphys} />
         <Clock toDate={this.state.toDate} />
       </div>

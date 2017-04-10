@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+// eslint-disable-next-line
 import countdown from 'moment-countdown';
 import moment from 'moment';
 import ClockTile from './clockTile';

@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 const Tile = (props) => {
-  const offset = props.giphyHeight < props.height ? (props.height - props.giphyHeight) % 2 : 0;
+  //const offset = props.giphyHeight < props.height ? (props.height - props.giphyHeight) % 2 : 0;
 
   var styles = {
     height: props.height,
@@ -15,7 +15,7 @@ const Tile = (props) => {
     <div className="col-sm-4 tile-padding">
       <div style={styles} className="tile">
         <div className='inner' >
-          <img style={{ width: '100%', verticleAlign: 'middle' }} src={props.url} />
+          <img alt='' style={{ width: '100%', verticleAlign: 'middle' }} src={props.url} />
         </div>
       </div>
     </div>
