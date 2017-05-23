@@ -18,29 +18,31 @@ class Clock extends Component {
         minutes: 0,
         seconds: 0
       },
-      height: 0
+      height: 0,
+      datePassed: false
     }
 
     this.calculateTimeDiff = this.calculateTimeDiff.bind(this);
   }
 
   calculateTimeDiff() {
-    var data = moment().countdown(this.state.toDate);
+    var data = moment(Date.Now).countdown(this.state.toDate);
 
     this.setState({
       clock: {
         months: data.months,
-        weeks: Math.floor(data.days / 7),
-        days: data.days % Math.floor(data.days / 7),
-        hours: data.hours,
-        minutes: data.minutes,
-        seconds: data.seconds
-      }
+        weeks: data.value > 0 ? Math.floor(data.days / 7) : 0,
+        days: data.value > 0 && data.days ? data.days % Math.floor(data.days / 7) : 0,
+        hours: data.value > 0 ? data.hours : 0,
+        minutes: data.value > 0 ? data.minutes : 0,
+        seconds: data.value > 0 ? data.seconds : 0
+      },
+      datePassed: data.value < 0
     });
   }
 
   componentDidMount() {
-    this.interval = setInterval(this.calculateTimeDiff, 1000);
+    setInterval(this.calculateTimeDiff, 1000);
     var diff = Math.floor((window.innerHeight / 2) - (this.refs.clock.clientHeight / 2));
     this.setState({ height: diff });
   }
